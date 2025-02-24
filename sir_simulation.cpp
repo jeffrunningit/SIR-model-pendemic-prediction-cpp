@@ -2,19 +2,19 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include "dotsmodel.h"
+#include "sirmodel.h"
 
 using namespace std;
 
 int main() {
     double infection_radius = 1, infection_probability = 0.5;
-    int infection_duration = 10, N = 10000;
+    int infection_duration = 10, N = 600;
 
     srand(time(nullptr));
 
 	cout << "-------------------------------" << endl;
-	cout << "Default parameters:" << endl;
 	cout << "Size of the box = 30 x 30" << endl;
+	cout << "Default parameters:" << endl;
 	cout << "Infection radius = " << infection_radius << endl;
 	cout << "Infection probability = " << infection_probability << endl;
 	cout << "Infection duration = " << infection_duration << endl;

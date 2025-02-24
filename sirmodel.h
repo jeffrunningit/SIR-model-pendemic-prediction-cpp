@@ -5,7 +5,7 @@
 
 #define PI 3.141592
 #define BOXSIZE 30
-#define DOTVEL 0.05
+#define MAXVEL 1
 
 using namespace std;
 
@@ -29,8 +29,9 @@ public:
         x = getRandomDouble(0, BOXSIZE);
         y = getRandomDouble(0, BOXSIZE);
         double randangle = getRandomDouble(0, 2 * PI);
-        vx = DOTVEL * sin(randangle);
-        vy = DOTVEL * cos(randangle);
+        double v = getRandomDouble(0.5 * MAXVEL, MAXVEL);
+        vx = v * sin(randangle);
+        vy = v * cos(randangle);
         state = 0;
     }
 
@@ -69,9 +70,9 @@ public:
 
             for (int j = i + 1; j < dots.size(); j++) {
                 if (dots[j].state + dots[i].state != 1) continue;
-                // Distance check + probability check
-                double dx = dots[i].x - dots[j].x; // distance check
+                double dx = dots[i].x - dots[j].x;
                 double dy = dots[i].y - dots[j].y;
+                // Distance check + probability check
                 if (dx * dx + dy * dy <= infection_radius * infection_radius && getRandomDouble(0, 1) < infection_probability) {
                     dots[j].state = 1;  // infected
                 }
